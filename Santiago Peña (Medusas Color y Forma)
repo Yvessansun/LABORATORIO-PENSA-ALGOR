@@ -1,0 +1,117 @@
+void setup() {
+  size(800, 800);
+  background(230, 230, 250);
+  noLoop();
+}
+
+void draw() {
+  noStroke();
+
+  // Medusa 1 Rosada
+  fill(255, 182, 193); 
+  ellipse(150, 200, 150, 150); // Cuerpo
+  
+  // Ojos 1
+  fill(255); 
+  ellipse(130, 180, 20, 20); 
+  ellipse(170, 180, 20, 20); 
+  
+  fill(0); // Pupilas 1
+  ellipse(130, 180, 10, 10); 
+  ellipse(170, 180, 10, 10); 
+  
+  // Tentáculos Rosados 1
+  fill(255, 182, 193); 
+  ellipse(150, 280, 12, 60); 
+  ellipse(120, 250, 12, 60); 
+  ellipse(180, 250, 12, 60); 
+  ellipse(140, 230, 12, 60);
+  ellipse(160, 230, 12, 60);
+  ellipse(100, 220, 12, 60); 
+  ellipse(200, 220, 12, 60); 
+  ellipse(130, 210, 12, 60); 
+  
+  // Medusa 2 Azul
+  fill(176, 224, 230); 
+  ellipse(400, 150, 120, 120);
+  
+  // Ojos 2
+  fill(255);
+  ellipse(380, 130, 18, 18); 
+  ellipse(420, 130, 18, 18); 
+  
+  fill(0); // Pupilas 2
+  ellipse(380, 130, 9, 9); 
+  ellipse(420, 130, 9, 9); 
+  
+  fill(176, 224, 230); // Tentáculos 2
+  ellipse(400, 230, 10, 50); 
+  ellipse(370, 210, 10, 50);
+  ellipse(430, 210, 10, 50);
+  ellipse(390, 210, 10, 50); 
+  ellipse(410, 210, 10, 50); 
+  ellipse(380, 250, 10, 50); 
+  
+  // Medusa 3 Verde
+  fill(144, 238, 144); 
+  ellipse(300, 400, 180, 180);
+  
+  // Ojos 3
+  fill(255); 
+  ellipse(280, 380, 25, 25);
+  ellipse(320, 380, 25, 25);
+  
+  fill(0); // Pupilas 3
+  ellipse(280, 380, 12, 12); 
+  ellipse(320, 380, 12, 12); 
+  
+  fill(144, 238, 144); // Tentáculos
+  ellipse(300, 480, 15, 70);
+  ellipse(270, 460, 15, 70);
+  ellipse(330, 460, 15, 70); 
+  ellipse(280, 470, 15, 70);
+  ellipse(320, 470, 15, 70); 
+  ellipse(250, 450, 15, 70);
+  ellipse(350, 450, 15, 70);
+  ellipse(290, 490, 15, 70);
+  ellipse(310, 490, 15, 70); 
+  ellipse(240, 470, 15, 70);
+  
+  // Medusa 4 Amarilla
+  fill(255, 239, 174);
+  ellipse(600, 500, 110, 110);
+  
+  // Ojos 4
+  fill(255);
+  ellipse(580, 480, 20, 20);
+  ellipse(620, 480, 20, 20);
+  
+  fill(0); // Pupilas 4
+  ellipse(580, 480, 10, 10); 
+  ellipse(620, 480, 10, 10);
+  
+  fill(255, 239, 174); // Tentáculos 4
+  ellipse(600, 590, 12, 55);
+  ellipse(570, 570, 12, 55);
+  ellipse(630, 570, 12, 55); 
+  ellipse(590, 570, 12, 55);
+  ellipse(610, 570, 12, 55); 
+  ellipse(580, 610, 12, 55);
+  ellipse(620, 610, 12, 55);
+  
+  // Burbujas
+  fill(176, 224, 230); // Azul 
+  ellipse(100, 100, 50, 50); 
+  ellipse(700, 150, 50, 50);
+  ellipse(500, 300, 50, 50); 
+  ellipse(200, 500, 50, 50); 
+  ellipse(650, 600, 50, 50); 
+  ellipse(300, 700, 50, 50);
+  
+  // Algas
+  fill(144, 238, 144);
+  triangle(0, height, 100, height - 100, 200, height); 
+  triangle(200, height, 300, height - 100, 400, height);
+  triangle(400, height, 500, height - 100, 600, height); 
+  triangle(600, height, 700, height - 100, 800, height); 
+}
