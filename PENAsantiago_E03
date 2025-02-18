@@ -1,0 +1,109 @@
+// Variables ballena
+float xBallena = 50;   // Posición inicial en X
+float yBallena = 300;  // Posición inicial en Y
+float velocidadBallena = 2; // Velocidad de movimiento
+int direccion = 1; // Dirección de la ballena (1 = derecha, -1 = izquierda)
+
+// Variables color ballena
+float colorBallena = 150; 
+
+// Variables para que el agua salga
+float xAgua, yAgua;
+boolean estaSaliendoAgua = false; // Controla si sale el agua o no
+
+// Variables cielo
+float colorCieloR, colorCieloG, colorCieloB;
+
+void setup() {
+  size(600, 400);
+  xAgua = xBallena + 50;
+  yAgua = yBallena - 30;
+}
+
+void draw() {  
+  // Cambiar el color del cielo
+  colorCieloR = map(sin(frameCount * 0.001), -1, 1, 50, 255); // Rojo
+  colorCieloG = map(sin(frameCount * 0.001 + 1), -1, 1, 100, 200); // Verde
+  colorCieloB = map(sin(frameCount * 0.001 + 2), -1, 1, 200, 255); // Azul
+  
+  // Fondo (cielo y mar)
+  background(colorCieloR, colorCieloG, colorCieloB); 
+  
+  // Olas en el mar
+  dibujarOlas();
+  
+  // Color de la ballena cambiante
+  dibujarBallena(xBallena, yBallena, color(colorBallena, 100, 200));
+
+  // Movimiento de la ballena
+  xBallena += velocidadBallena * direccion;
+  yBallena = 300 + sin(frameCount * 0.05) * 10; // Movimiento suave arriba/abajo
+  
+  // Cambio de color por la posición
+  colorBallena = map(xBallena, 0, width, 100, 255);
+
+  // Rebotar en los bordes
+  if (xBallena > width - 100 || xBallena < 0) { 
+    direccion *= -1; // Cambiar dirección
+    velocidadBallena = random(1.5, 3); // Variar la velocidad un poco
+  }
+  
+  // Dibujar agua que sale
+  if (estaSaliendoAgua) {
+    dibujarAgua();
+    yAgua -= 2; // Mover el agua hacia arriba
+    
+    if (yAgua < yBallena - 80) {
+      estaSaliendoAgua = false;
+      xAgua = xBallena + 50;
+      yAgua = yBallena - 30;
+    }
+  }
+  
+  // Tiempo de salida de agua
+  if (frameCount % 180 == 0) {
+    estaSaliendoAgua = true;
+  }
+}
+
+// Dibujar la ballena
+void dibujarBallena(float x, float y, color c) {
+  fill(c);
+  
+  // Cuerpo
+  ellipse(x + 50, y, 120, 60);
+
+  // Cola
+  triangle(x - 10, y, x - 30, y - 10, x - 30, y + 10);
+
+  // Ojo
+  fill(255);
+  ellipse(x + 40, y - 10, 10, 10);
+  fill(0);
+  ellipse(x + 40, y - 10, 5, 5);
+  
+  // Boca
+  noFill();
+  stroke(0);
+  arc(x + 60, y + 10, 20, 10, 0, PI/2);
+  noStroke();
+}
+
+// Dibujo agua que sale
+void dibujarAgua() {
+  fill(0, 150, 255, 200); // Azul transparente
+  ellipse(xAgua, yAgua, 10, 10);
+}
+
+// Dibujo olas en el mar
+void dibujarOlas() {
+  fill(30, 93, 214);
+  rect(0, height/2, width, height/2);
+  
+  // Olas animadas
+  fill(255, 255, 255, 100); // Color blanco semitransparente
+  for (int i = 0; i < width; i += 40) {
+    float waveHeight = sin(frameCount * 0.05 + i * 0.2) * 5; 
+    ellipse(i, height/2 + waveHeight, 40, 10);
+  }
+}
