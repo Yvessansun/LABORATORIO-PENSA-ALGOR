@@ -1,0 +1,85 @@
+//Mi trabajo habla de el concepto que se maneja en la lectura de que la digitalizació del tiempo y el reloj afecta de manera directa y reciente a la sociedad 
+//y cómo llas personas que vivimos en ella nos organizamos y estrategizamos frente a él. Incluso yendo más allá del reloj mecánico. 
+//El reloj digital se ha convertido en el estándar central del mundo y se ha convertido en un sinónimo exclusicvo de lo profesional y lo corporativo y se vuelve 
+//lo esperado para ser validado, sin embargo la sociedad no siempre ha usado estos métodos para guiar su vida, los elementos de la naturaleza siempre han sido la guía principal.
+//La nieve es un elemento natural que refleja el paso del tiempo de la manera más cruel y directa, dejando de existir con el paso del mismo. Este código está inspirado en un hombre de nieve que en vez de derretirse,
+//la nieve crece pero sigue reflejando el paso del tiempo. La cabeza son segundos, cuerpo es minutos y base es base.
+
+
+void setup() {
+  size(500, 500);
+}
+
+void draw() {
+  int h = hour();  // Hora del momento
+  println(h);      // Pone la hora en la consola
+
+  // Fondo que cambia de color dependiendo de la hora del día (más de 21 es negro y menos es azul)
+  if (h > 21) {
+    background(0);   // Fondo negro
+  } else {
+    background(135, 206, 235); // Fondo azul
+  }
+
+  // Sol en la esquina superior derecha (aparece sólo de día, entonces también se usa el if < 21)
+  if (h <= 21) {
+    fill(255, 204, 0);
+    ellipse(450, 50, 60, 60);
+  }
+
+  // Piso de nieve
+  fill(255);
+  rect(0, height - 80, width, 80);
+
+  // Copos de nieve
+  fill(255);
+  ellipse(50, 50, 5, 5);
+  ellipse(100, 80, 5, 5);
+  ellipse(200, 120, 5, 5);
+  ellipse(300, 60, 5, 5);
+  ellipse(400, 90, 5, 5);
+  ellipse(250, 150, 5, 5);
+  ellipse(350, 40, 5, 5);
+  ellipse(450, 70, 5, 5);
+  ellipse(150, 200, 5, 5);
+  ellipse(75, 160, 5, 5);
+
+  // Árboles
+  fill(34, 139, 34);
+  triangle(70, height - 100, 130, height - 100, 100, height - 160);
+  triangle(60, height - 130, 140, height - 130, 100, height - 190);
+  fill(139, 69, 19);
+  rect(90, height - 100, 20, 30);
+
+  fill(34, 139, 34);
+  triangle(370, height - 100, 430, height - 100, 400, height - 160);
+  triangle(360, height - 130, 440, height - 130, 400, height - 190);
+  fill(139, 69, 19);
+  rect(390, height - 100, 20, 30);
+
+  // Variables de tiempo, s es segundos, m es minutos y h es horas, pero ya la h está estipulada arriba
+  int s = second();
+  int m = minute();
+
+  float tamCab = map(s, 0, 59, 30, 80);  // Tamaño de la cabeza es tamCab
+  float tamCue = map(m, 0, 59, 50, 120); // Tamaño del cuerpo es tamCue
+  float tamBas = map(h, 0, 23, 70, 150); // Tamaño de la base es tamBas
+
+  float x = width / 2; //esta parte la hice con ChatGPT ya que no sabía mantener el ratio espacial entre las bolas del cuerpo, entonces pedí ayuda para desarrollar esta parte y que no hubiesen espacios entre ellos
+  float baseY = height - tamBas / 2 - 20;
+  float cuerpoY = baseY - tamBas / 2 - tamCue / 2;
+  float cabezaY = cuerpoY - tamCue / 2 - tamCab / 2;
+//Hasta aquí va la parte que hice con ayuda de chat
+
+  // Dibujo de muñeco de nieve
+  fill(255);
+  ellipse(x, baseY, tamBas, tamBas);
+  ellipse(x, cuerpoY, tamCue, tamCue);
+  ellipse(x, cabezaY, tamCab, tamCab);
+
+  // Dibujo nariz del muñeco
+  fill(255, 102, 0);
+  float narizX = x + tamCab / 3;
+  float narizY = cabezaY;
+  triangle(narizX, narizY, narizX + 15, narizY -5, narizX + 8, narizY + 4);
+}
